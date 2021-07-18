@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+
+/* .App {
+  font-family: sans-serif;
+  text-align: center;
+} */
+
+body {
+  margin: 0;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+  padding-top: 75px;
+  background: #ccc;
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+}
+
+.item1 {
+  padding-bottom: 100px;
+  /* width: 200px; */
+  height: "auto";
+  /* margin: 50px auto; */
+  /* padding-top: 75px; */
+  /* background: #ccc; */
+  /* text-align: center; */
+  /* color: #fff; */
+  /* font-size: 3em; */
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

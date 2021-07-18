@@ -1,0 +1,116 @@
+import { Box, CardMedia, CardContent } from "@material-ui/core";
+
+import Styled from "styled-components";
+import { motion } from "framer-motion";
+
+const transition = {
+  duration: 0.5,
+  ease: [0.04, 0.62, 0.23, 0.98]
+};
+
+const PaperPrinc = Styled.div`
+  max-width: 600px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+`;
+
+const Content = Styled(motion.div)`
+  display: flex;  
+  flex-direction: ${(props) => props.flexDirection};
+  @media (max-width: 600px) {
+    flex-direction: column;
+  };
+`;
+
+const CardBase = Styled(motion.div)`
+  height: 320px;
+  width: 100%;
+  background-color: "#e8h9z9";
+  min-width: 260px;
+  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  overflow: hidden;
+`;
+
+const CotentTitle = Styled.div`
+  font-size: 27px;
+  display:flex;
+  font-weight:400;
+  line-height:1.334;
+  letterSpacing: 0;
+  padding-bottom: 0;
+  justify-content: center;
+  @media (max-width: 600px) {
+    padding-bottom: 1;
+    justify-content: left;
+  };
+`;
+
+const CotentDesc = Styled.div`
+  text-align: justify;
+  font-size:20px;
+  width: 100%;
+  font-wWeight: 400;
+  line-height: 1.43;
+  max-height: 500px;
+`;
+
+const img =
+  "https://images.unsplash.com/photo-1620672162311-12de9101fce2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
+
+export default function MyCard(props) {
+  return (
+    <motion.div
+    // drag
+    // dragConstraints={{ left: 0.01, right: 0.01, top: 0.01, bottom: 0.01 }}
+    // dragElastic={0.01}
+    >
+      <PaperPrinc elevation={4}>
+        <Content
+          animate={{ scale: 0.98 }}
+          flexDirection={props.flexDirection}
+          whileHover={{ scale: 1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={transition}
+        >
+          <CardBase
+            whileHover={{
+              borderRadius: 0,
+              borderTopRightRadius: "4px",
+              borderTopLeftRadius: "4px"
+            }}
+            whileTap={{ borderRadius: "4px" }}
+            transition={transition}
+          >
+            <CardMedia image={img} style={{ height: "inherit" }} />
+          </CardBase>
+          <CardContent style={{ display: "flex" }}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-evenly"
+              flexGrow={2}
+              fontFamily={props.fontFamily}
+              width={"100%"}
+            >
+              <CotentTitle children={"Descrição"} />
+              <CotentDesc
+                children={
+                  "Podemos já vislumbrar o modo pelo qual o aumento do diálogo entre os diferentes setores."
+                }
+              />
+            </Box>
+          </CardContent>
+        </Content>
+      </PaperPrinc>
+    </motion.div>
+  );
+}
